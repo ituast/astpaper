@@ -1,0 +1,566 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%\usepackage{newtxtext,newtxmath}
+\usepackage{titling, graphicx}
+\usepackage{tikz}
+\usepackage{upgreek}
+\usepackage{amsmath,amsthm}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{ifthen}
+\captionsetup[table]{skip=10pt}
+\setlength{\tabcolsep}{2pt}
+\usepackage{showframe}
+%\usepackage{mathptmx}
+
+
+%\pgfplotsset{compat=1.14}
+%\usepackage{strtikz}
+%\usetikzlibrary{shapes,arrows.meta, graphs, graphs.standard}
+%\usetikzlibrary{math, fit}
+%\usetikzlibrary{calc,intersections,through,backgrounds,decorations.pathmorphing}
+%\usetikzlibrary{external}
+
+%\renewcommand{\arraystretch}{2}
+
+%\date{}
+%\setlength\parindent{0pt}
+
+\pretitle{\begin{center} \Large \bf }
+\posttitle{\par\end{center}}
+\preauthor{\begin{center} \large \begin{tabular}[t]{c}}
+\postauthor{\end{tabular}\par\end{center}}
+
+\rhead{Erku\c{s}, B.}
+\rhead{}
+\lhead{Shear Displacement}
+
+\fancypagestyle{firststyle}
+{
+\lhead{$1^{\text{st}}$ Draft}
+\chead{}
+\rhead{Submitted to:}
+}
+
+%\renewenvironment{align*}{\align}{\endalign}
+%\renewenvironment{alignat*}{\align}{\endalign}
+
+%Matrix Greek Letters
+\usepackage{upgreek}
+\usepackage{pdfrender}
+\newcommand*{\boldgreek}[1]{%
+  \textpdfrender{%
+    TextRenderingMode=FillStroke,%
+    LineWidth=.35pt,%
+  }{#1}%
+}
+
+\makeatletter
+\g@addto@macro \normalsize {%
+ \setlength\abovedisplayskip{8pt}%
+ \setlength\belowdisplayskip{8pt}%
+}
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style ascelike
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification false
+\use_refstyle 1
+\use_minted 0
+\branch Info on TMD - 01
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch OLD Equivalent MDOF System
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch Seismic Applications
+\selected 0
+\filename_suffix 0
+\color #ff5500
+\end_branch
+\branch OLD
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 25mm
+\topmargin 25mm
+\rightmargin 30mm
+\bottommargin 20mm
+\footskip 10mm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Note on Virtual Work Principle Regarding Shear Rotations
+\end_layout
+
+\begin_layout Author
+Barış Erkuş
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Assist.
+ Prof.
+ Dr., Civil Eng.
+ Dept., Istanbul Technical University, Istanbul, Turkey; bariserkus@itu.edu.tr
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+10 November 2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{firststyle}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Virtual work principle can be applied to find the deflections of beams and
+ frames.
+ However, it is noted that rotations of frame elements estimated by conventional
+ virtual work principle includes rotations due to bending but due to shear
+ deformations since moment and shear does not do work through shear rotations.
+ Shear rotation at a given point of a frame element is straightforward to
+ estimate and can be added to the total rotation afterwards the application
+ of the virtual work principle.
+ Two simple examples are given, where it is shown the procedure does not
+ include shear rotations in the estimated rotation of a given point on the
+ frame.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Virtual work principle is fundamental apprach that can be used to estimate
+ deflection values of a point on a frame element.
+ The most general form of the principle states that work done by the external
+ forces, inluding reactions, of the virtual loading system through the correspon
+idng deflections of the original system is equal to the work done by the
+ internal forces, moment, shear and axial, of the virtual system through
+ the corresponding internal deformations of the original system, rotations,
+ shear and axial deformations.
+ For typical frame structures, shear and axial deformations often ignored
+ since deflection values (both rotations and displacements) due to bending
+ are significantly larger than deflection values caused by shear and axial
+ forces 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Warburton1980"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Review of Virtual Work Principle for Frames
+\end_layout
+
+\begin_layout Standard
+In this section, a review of the frame element internal forces and corresponding
+ internal deformations are given.
+ Then, virtual work principle is stated, and its formulation is presented.
+ A proof of the formulation is not given as it is well-documented in the
+ literature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/fig01b.pdf
+	lyxscale 75
+
+\end_inset
+
+
+\begin_inset VSpace -0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/fig01a.pdf
+	lyxscale 75
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:frame-element"
+
+\end_inset
+
+A frame element and internal forces and deformations at a given point
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Consider a portion of a frame element and internal forces and corresponding
+ deformations at a given section (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:frame-element"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Internal stresses of a beam element are represented as internal force for
+ structural analysis.
+ These, bending moment 
+\begin_inset Formula $M$
+\end_inset
+
+, shear force 
+\begin_inset Formula $V$
+\end_inset
+
+, and axial force 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ The deformations associated with these internal forces are bending rotations
+ 
+\begin_inset Formula $d\theta$
+\end_inset
+
+, shear displacements 
+\begin_inset Formula $dv$
+\end_inset
+
+ and axial displacements 
+\begin_inset Formula $d\delta$
+\end_inset
+
+.
+ Therefore, corresponding strains can be represented by 
+\begin_inset Formula 
+\begin{align}
+\epsilon_{\text{bending}} & =\dfrac{d\theta}{dx} & \epsilon_{\text{shear}} & =\dfrac{dv}{dx} & \epsilon_{\text{axial}} & =\dfrac{d\delta}{dx}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Note that shear strain corresponds to the shear rotation 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\gamma=\epsilon_{\text{shear}}=dv/ds$
+\end_inset
+
+.
+ For a given frame element, internal forces are related to the internal
+ deformation as follows:
+\begin_inset Formula 
+\begin{align}
+d\theta & =\dfrac{M(x)}{EI}dx & dv & =\dfrac{V(x)}{GA_{\text{s}}}dx & d\delta & =\dfrac{N(x)}{AE}dx\label{eq:def-int-rel}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/fig01c.pdf
+	lyxscale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:frame-structure"
+
+\end_inset
+
+A frame element and internal forces and deformations at a given point
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Consider that a frame structure is under the effect of a set of external
+ forces, support settlements and temperature changes, which are collectively
+ called System A.
+ Here, 
+\begin_inset Formula $\Delta t_{\text{rel}}^{\text{A}}$
+\end_inset
+
+ is the relative temperature between the bottom and top fiber of sections,
+ 
+\begin_inset Formula $\Delta t_{\text{uni}}^{\text{A}}$
+\end_inset
+
+ is the uniform temperature change along the section of the frame elements
+ and 
+\begin_inset Formula $\delta_{\text{sm}}^{\text{A}}$
+\end_inset
+
+ is a given support movement value.
+ The resulting internal forces of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ frame element are represented by 
+\begin_inset Formula $M_{i}^{\text{A}}(x)$
+\end_inset
+
+, 
+\begin_inset Formula $V_{i}^{\text{A}}(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{i}^{\text{A}}(x)$
+\end_inset
+
+.
+ Corresponding internal deformations are shown by 
+\begin_inset Formula $d\theta_{i}^{\text{A}}$
+\end_inset
+
+, 
+\begin_inset Formula $dv_{i}^{\text{A}}$
+\end_inset
+
+ and 
+\begin_inset Formula $d\delta_{i}^{\text{A}}$
+\end_inset
+
+, where Equations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def-int-rel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be used to relate them to internal forces.
+ Likewise, consider a new set of external effects, which is called System
+ B.
+ For the sake of simplicity, it is assumed that System B does not include
+ temperature and support movement effects.
+ Replacing the deformation terms with their representation in terms of internal
+ forces and temperature change, this equation becomes
+\begin_inset Formula 
+\begin{multline}
+F_{\text{a}}^{\text{B}}\delta_{\text{a}}^{\text{A}}+M_{\text{d}}^{\text{B}}\theta_{\text{d}}^{\text{A}}+R^{\text{B}}\delta_{\text{sm}}^{\text{A}}+\int_{\text{b}}^{\text{c}}w^{\text{A}}(x)\delta_{\text{bc}}^{\text{A}}(x)dx=\\
+\sum_{i}\Big(\int_{L}M_{i}^{\text{B}}(x)\dfrac{M^{\text{A}}(x)}{EI}dx+\int_{L}V_{i}^{\text{B}}(x)\dfrac{V^{\text{A}}(x)}{GA_{\text{s}}}dx+\int_{L}N_{i}^{\text{B}}(x)\dfrac{N^{\text{A}}(x)}{AE}dx\\
++\int_{L}M_{i}^{\text{B}}(x)\dfrac{\alpha_{i}\Delta t_{\text{rel}}^{\text{A}}}{d_{i}}dx+\int_{L}N_{i}^{\text{B}}(x)\alpha_{i}\Delta t_{\text{uni}}^{\text{A}}dx\Big)\label{eq:virtual-work}
+\end{multline}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Displacements estimated using virtual work principle includes shear deformations.
+ On the other hand, rotations found from this equation does not include
+ shear rotation 
+\begin_inset Formula $\gamma(x)$
+\end_inset
+
+ since there is no work term associated with the shear rotation.
+ Shear rotation can be included in the Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:virtual-work"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by considering it as an existing structural deformation similar to fabrication
+ errors or support settlements.
+ In this case, external moments of System B does work through shear rotations.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:frame-structure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, shear rotation at joint d will be the difference between the shear rotations
+ at the connecting beam and column.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "astbib"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
